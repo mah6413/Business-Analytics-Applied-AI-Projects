@@ -1,1 +1,233 @@
-Welcome to my Business Analytics-Applied AI Projects repository!  This Business Analytics-Applied AI Projects features business analytics and AI Python coding assignments that I have completed through the University of Rochester-Simon Business School in their MS Business Analytics and Applied AI Program!
+---
+
+# Maxine Humphrey — Applied AI & Business Analytics Portfolio
+
+Welcome to my Applied AI and Business Analytics project portfolio. This repository contains a collection of Python, machine learning, and enterprise AI applications developed as part of the MS in Business Analytics & Applied AI program at the University of Rochester-Simon Business School, as well as independent applied AI system prototypes.
+
+My work focuses on designing intelligent systems that integrate statistical modeling, backend analytics, and large language models (LLMs) to solve real-world business and operational problems.
+
+---
+
+# About Me
+
+I am a Cybersecurity Analyst and graduate student specializing in Applied AI, business analytics, and enterprise AI system development. My technical focus includes:
+
+* Applied AI and LLM system design
+* Python programming and analytics
+* Statistical modeling and regression analysis
+* Enterprise AI assistants and decision support systems
+* AI guardrails, validation, and reliability engineering
+* Data analysis and business intelligence
+
+My goal is to develop production-ready AI systems that enhance organizational decision-making, operational efficiency, and cybersecurity resilience.
+
+---
+
+# Technical Skills
+
+**Programming Languages**
+
+* Python
+* SQL
+
+**AI / Machine Learning**
+
+* Large Language Models (LLMs)
+* Regression modeling
+* Statistical analysis
+* Simulation modeling
+
+**AI System Development**
+
+* Conversational AI systems
+* Multi-turn chat architectures
+* Tool-integrated AI assistants
+* Guardrails and validation systems
+
+**Data Analysis & Visualization**
+
+* Pandas
+* Matplotlib
+* Statistical modeling and interpretation
+
+**Enterprise Applications**
+
+* Operations analytics
+* IT help desk AI assistants
+* Decision support systems
+
+---
+
+# Featured Projects
+
+## Operations Assistant AI System
+
+Developed an AI-powered operations assistant that integrates large language models with backend analytics functions.
+
+**Key capabilities:**
+
+* Demand forecasting integration
+* Production risk analysis
+* Material requirement calculations
+* Natural language interaction with business analytics tools
+
+**Technologies:** Python, LLM integration, analytics functions
+
+**Business value:**
+Demonstrates how AI assistants can support operations managers by translating natural language questions into data-driven business insights.
+
+---
+
+## AI IT Help Desk Assistant with Guardrails
+
+Designed an enterprise AI help desk assistant with validation, safety guardrails, and controlled output handling.
+
+**Key capabilities:**
+
+* IT support ticket assistance
+* Response validation logic
+* Refusal handling for unsupported requests
+* Structured and reliable output generation
+
+**Technologies:** Python, LLM architecture, validation systems
+
+**Enterprise relevance:**
+Demonstrates implementation of reliable and safe AI assistants suitable for enterprise deployment.
+
+---
+
+## Multi-Turn Conversational AI System
+
+Built a conversational AI assistant capable of maintaining context across multiple interactions.
+
+**Key capabilities:**
+
+* Context retention across conversations
+* Stateful conversation management
+* Structured conversational flows
+
+**Enterprise applications:**
+
+* Customer support assistants
+* IT help desk bots
+* HR support systems
+
+---
+
+## Price Elasticity and Regression Modeling
+
+Developed a regression-based analytics model to analyze price elasticity and demand relationships.
+
+**Key capabilities:**
+
+* Linear regression modeling
+* Demand sensitivity analysis
+* Business decision support
+
+**Business impact:**
+Supports pricing strategy and revenue optimization decisions.
+
+---
+
+## Data Analysis and Visualization with Python
+
+Performed structured data analysis and visualization to support business insights.
+
+**Key capabilities:**
+
+* Data cleaning and analysis
+* Statistical interpretation
+* Visual reporting
+
+---
+
+## Python Simulation and Algorithmic Modeling
+
+Developed simulation-based Python models demonstrating probabilistic and logical system behavior.
+
+**Skills demonstrated:**
+
+* Algorithm design
+* Control flow logic
+* Simulation modeling
+
+---
+
+# AI Engineering Competencies Demonstrated
+
+This portfolio demonstrates applied experience in:
+
+* Designing enterprise AI assistants
+* Integrating AI systems with backend analytics functions
+* Implementing validation and guardrails for AI safety
+* Applying statistical modeling to business problems
+* Developing production-style AI architectures
+
+---
+
+# Real-World Applications
+
+The systems and techniques demonstrated in this portfolio are applicable to:
+
+* Enterprise AI assistant development
+* Cybersecurity AI systems
+* IT and HR support automation
+* Operations and supply chain analytics
+* Business intelligence and decision support
+
+---
+
+# Repository Structure
+
+```
+Business-Analytics-Applied-AI-Projects/
+
+Operations Assistant Bot
+IT Help Desk AI with Guardrails
+Multi-Turn Chat System
+Price Elasticity Regression Model
+Data Analysis and Visualization
+Python Simulation Models
+```
+
+---
+
+# Education
+
+MS, Business Analytics & Applied AI
+University of Rochester — Simon Business School
+Expected Graduation: 2026
+
+MBA
+Rochester Institute of Technology
+
+BA, International Relations
+University of Rochester
+
+---
+
+# Career Focus
+
+I am focused on roles involving:
+
+* Applied AI Engineering
+* Cybersecurity AI
+* AI Systems Engineering
+* AI Solutions Engineering
+* Enterprise AI Development
+
+---
+
+# Contact
+
+LinkedIn: [www.linkedin.com/in/maxinehumphrey](http://www.linkedin.com/in/maxinehumphrey)
+GitHub: github.com/mah6413
+
+---
+
+# Summary
+
+This portfolio reflects my commitment to building intelligent, reliable, and enterprise-ready AI systems that combine machine learning, analytics, and real-world business applications.
+
+---
+

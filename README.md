@@ -198,7 +198,7 @@ MS, Business Analytics & Applied AI
 University of Rochester — Simon Business School
 Expected Graduation: 2026
 
-MBA
+MBA,
 Rochester Institute of Technology
 
 BA, International Relations
@@ -220,7 +220,7 @@ I am focused on roles involving:
 
 # Contact
 
-LinkedIn: [www.linkedin.com/in/maxinehumphrey](http://www.linkedin.com/in/maxinehumphrey)
+LinkedIn: https://www.linkedin.com/in/maxine-h-4aa9b454/ 
 GitHub: github.com/mah6413
 
 ---

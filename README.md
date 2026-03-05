@@ -66,15 +66,15 @@ Developed a Retrieval-Augmented Generation (RAG) assistant that helps policy and
 
 **Key capabilities**:
 
-Retrieval of relevant policy documents using vector embeddings
+* Retrieval of relevant policy documents using vector embeddings
 
-Context-grounded policy briefing generation
+* Context-grounded policy briefing generation
 
-Natural language question answering over policy materials
+* Natural language question answering over policy materials
 
-Summarization of complex legislation and policy reports
+* Summarization of complex legislation and policy reports
 
-Guardrails to ensure responses are grounded in retrieved sources
+* Guardrails to ensure responses are grounded in retrieved sources
 
 **Technologies**: Python, Langchain, Retrieval-Augmented Generation (RAG), vector embeddings, LLM integration, prompt engineering
 

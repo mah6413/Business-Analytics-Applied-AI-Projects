@@ -60,6 +60,27 @@ My goal is to develop production-ready AI systems that enhance organizational de
 
 # Featured Projects
 
+## Policy Content & Briefing Assistant (RAG System)
+
+Developed a Retrieval-Augmented Generation (RAG) assistant that helps policy and advocacy teams generate briefings, summarize documents, and answer questions using trusted policy sources.
+
+**Key capabilities**:
+
+Retrieval of relevant policy documents using vector embeddings
+
+Context-grounded policy briefing generation
+
+Natural language question answering over policy materials
+
+Summarization of complex legislation and policy reports
+
+Guardrails to ensure responses are grounded in retrieved sources
+
+**Technologies**: Python, Langchain, Retrieval-Augmented Generation (RAG), vector embeddings, LLM integration, prompt engineering
+
+Business value:
+Demonstrates how AI assistants can support policy and government affairs teams by transforming large collections of policy documents into a searchable knowledge system that enables faster analysis, briefing preparation, and informed decision-making.
+
 ## Operations Assistant AI System
 
 Developed an AI-powered operations assistant that integrates large language models with backend analytics functions.
@@ -71,7 +92,7 @@ Developed an AI-powered operations assistant that integrates large language mode
 * Material requirement calculations
 * Natural language interaction with business analytics tools
 
-**Technologies:** Python, LLM integration, analytics functions
+**Technologies:** Python, Langchain, LLM integration, analytics functions
 
 **Business value:**
 Demonstrates how AI assistants can support operations managers by translating natural language questions into data-driven business insights.

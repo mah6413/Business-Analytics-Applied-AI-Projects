@@ -78,7 +78,7 @@ Guardrails to ensure responses are grounded in retrieved sources
 
 **Technologies**: Python, Langchain, Retrieval-Augmented Generation (RAG), vector embeddings, LLM integration, prompt engineering
 
-Business value:
+**Business value:** 
 Demonstrates how AI assistants can support policy and government affairs teams by transforming large collections of policy documents into a searchable knowledge system that enables faster analysis, briefing preparation, and informed decision-making.
 
 ## Operations Assistant AI System

@@ -68,6 +68,12 @@ Performed exploratory data analysis and interpreted component loadings to uncove
 
 **Tools & Technologies:** R, R Markdown, ggplot2, dplyr, PCA (`prcomp`), statistical analysis, data visualization.
 
+**Business Value:**
+
+This project demonstrates how statistical dimensionality reduction techniques can help organizations simplify complex datasets, identify the variables with the greatest influence on outcomes, and support more efficient data-driven decision-making. By reducing noise and redundancy within high-dimensional data, PCA can improve analytical performance, enhance visualization capabilities, and streamline downstream machine learning or predictive modeling workflows.
+
+The analysis highlights practical applications of PCA in business analytics, including customer segmentation, operational performance analysis, risk assessment, and feature reduction for AI/ML models. The project showcases the ability to translate advanced statistical concepts into interpretable insights that can support strategic business and operational decisions.
+
 ## Policy Content & Briefing Assistant (RAG System)
 
 Developed a Retrieval-Augmented Generation (RAG) assistant that helps policy and advocacy teams generate briefings, summarize documents, and answer questions using trusted policy sources.

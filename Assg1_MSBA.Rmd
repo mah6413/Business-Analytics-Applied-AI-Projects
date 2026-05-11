@@ -1,0 +1,393 @@
+---
+title: 'Assignment 1: Consumer Segmentation using PCA'
+author: "Maxine Humphrey"
+date: "Spring B 2026, MKT 472"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+A pilot survey was conducted of 30 individuals to understand their different attitudes towards discount stores (e.g., K-Mart), which usually come with low levels of service versus departmental stores (e.g., Macys) which come with higher levels of service. Respondents were asked their opinion on a 0-9 agree-disagree scale (where 0 indicates strongly disagree and 9 indicates strongly agree) on the following questions.
+\begin{enumerate}
+\item I never go back to a store that had treated me with disrespect.
+\item I find salespeople who fawn over me irritating, I just expect them to courteous.
+\item I have a lot of questions when I shop, I greatly appreciate a salesperson who is
+willing to spend time answering my questions.
+\item I care little for the fancy displays in departmental stores.
+\item Discount stores are much more of a bargain than departmental stores.
+\end{enumerate}
+
+The data for this study are provided in assg1.csv Using this data, answer the following questions.
+
+# Questions
+\begin{enumerate}
+\item Import, scale, and summarize the data in R. (1 point)
+\item Present the matrix of correlations for the five variables (X1-X5) and plot the correlations. Explain (in words) your inferences based on this exploratory analysis. (1 point)
+\item Perform PCA on the data and show the results (including the summary of the PCA and the matrix showing the relationship between the factors and original attributes). (1 point) 
+\item Write down the five equations that formally define relationship between the original attributes and the factors from the PCA. (1 point)
+\item How many factors or principal components should we retain? Explain your decision. (1.5 points)
+\item Can you think of intuitive names for the first and second factors? What do these factors represent? Explain how you arrived at them. Hint: Use the equations that quantify the relationship between the original attributes and the factors from the PCA (from answer to Question 4) and focus on strong correlations. (2 points)
+\item Now plot all the consumers on a two-dimensional map based on the first two principal components. Label the x and y-axis using the names from your answer to the previous question. (1.5 points)
+\item Based on the plot from the previous answer, how many segments (roughly) do you find in the market? Hint: A segment is a group of consumers who are similar to each other in their tastes and preferences. (2 points)
+\item Describe the characteristics of each segment. Discuss the relationship between the segment characteristics and the original attributes? (2 points)
+\item Which segment do you expect to be the most profitable and why? Assuming the data to be representative, what is the size of this segment (in percentage)? (2 points)
+\end{enumerate}
+
+# Instructions
+\begin{enumerate}
+\item Late assignments will automatically receive zero.
+\item The points for each question are shown next to it. The total is 15 points.
+\item This is a group assignment. Only one person from the group should submit the assignment, but please list the names of all the group members in the first page of your submission.
+\item You are expected to write up the assignment using R Markdown (in the style of the handouts you were given for the in-class work). Please answer each question one by one. For each question, show the R commands you used and then briefly present any discussion/text that you want below it. Please submit the .Rmd file and the ‘knitted’ word document. You do not need to submit any data files. 
+\item If you have any questions or need any clarifications on the assignment, please post on your question on the discussion board for this assignment. I will try to answer it as soon as possible. If you see a question from another student that you know the answer to, please feel free to chip in. 
+\end{enumerate}
+
+```{r}
+install.packages("tidyverse", repos = "https://cloud.r-project.org")
+install.packages("corrplot", repos = "https://cloud.r-project.org")
+```
+
+
+```{r}
+
+library(tidyverse)
+library(corrplot)
+
+# Import the dataset
+assg1 <- read.csv("assg1.csv")
+
+
+
+# View the data
+head(assg1)
+str(assg1)
+```
+
+
+```{r}
+#Question 1
+
+# Select the five variables used in PCA
+X <- assg1 %>% select(X1, X2, X3, X4, X5)
+
+# Summary of original data
+summary(X)
+
+# Means and standard deviations of original variables
+sapply(X, mean)
+sapply(X, sd)
+
+# Scale the data
+X_scaled <- scale(X)
+
+# Summary of scaled data
+summary(X_scaled)
+```
+The dataset contains 30 respondents and 5 shopping attitude variables (X1 through X5). Since PCA is sensitive to the scale of the variables, I standardized the data before performing the analysis. After scaling, each variable has mean approximately 0 and standard deviation approximately 1, making the variables comparable for PCA.
+
+```{r}
+#Question 2
+
+# Correlation matrix
+cor_mat <- cor(X)
+round(cor_mat, 3)
+```
+
+```{r}
+# Correlation plot
+corrplot(cor_mat,
+         method = "circle",
+         type = "upper",
+         addCoef.col = "black",
+         tl.col = "black",
+         tl.srt = 45)
+```
+
+The correlation matrix shows several strong relationships among the variables.
+
+X1 and X3 are strongly positively correlated, suggesting that consumers who dislike being treated disrespectfully also tend to appreciate salespeople who answer their questions.
+X1 and X2 are strongly negatively correlated, meaning consumers who value respectful service are less likely to think attentive salespeople are irritating.
+X2 and X3 are also negatively correlated, indicating that people who dislike attention from salespeople are also less likely to want detailed help from them.
+X4 and X5 are positively correlated, suggesting that consumers who do not care for department store displays are more likely to believe discount stores offer better bargains.
+
+These patterns suggest that the variables may reflect two broader dimensions: one related to service expectations and another related to discount or value orientation.
+
+```{r}
+
+#Question 3 
+
+# Run PCA using standardized variables
+pca_fit <- prcomp(X, scale. = TRUE)
+
+# PCA summary
+summary(pca_fit)
+```
+
+```{r}
+# Eigenvalues and variance explained
+eigenvalues <- pca_fit$sdev^2
+prop_var <- eigenvalues / sum(eigenvalues)
+cum_var <- cumsum(prop_var)
+
+pca_results <- data.frame(
+  Component = paste0("PC", 1:length(eigenvalues)),
+  Eigenvalue = eigenvalues,
+  Proportion_Variance = prop_var,
+  Cumulative_Variance = cum_var
+)
+
+knitr::kable(pca_results, digits = 3)
+
+```
+
+```{r}
+# Rotation matrix (loadings)
+round(pca_fit$rotation, 3)
+```
+
+```{r}
+# Correlation between original variables and principal components
+factor_cor <- cor(X, pca_fit$x)
+round(factor_cor, 3)
+```
+
+The PCA results show that the first two principal components explain most of the variation in the data.
+
+PC1 explains about 53.4% of the variance.
+PC2 explains about 37.0% of the variance.
+Together, PC1 and PC2 explain about 90.5% of the total variance.
+
+This means that the five original variables can be summarized very well using just two components. The loading and correlation matrices show that PC1 is mostly associated with service-related attitudes, while PC2 is mainly associated with discount and value-related attitudes.
+
+```{r}
+#Question 4
+
+round(pca_fit$rotation, 3)
+```
+
+Using the PCA loading matrix, the five principal component equations are:
+
+
+PC1=0.555X1−0.571X2+0.580X3+0.017X4−0.174X5
+
+PC2=0.232X1+0.212X2+0.157X3+0.686X4+0.637X5
+
+PC3=−0.280X1−0.183X2+0.311X3−0.561X4+0.691X5
+
+PC4=0.723X1+0.462X2−0.187X3−0.461X4+0.125X5
+
+PC5=−0.191X1+0.618X2+0.713X3−0.041X4−0.267X5
+
+These equations show that each principal component is a weighted combination of the original shopping attitude variables.
+
+```{r}
+#Question 5
+
+# Scree plot
+plot(eigenvalues, type = "b", pch = 19,
+     xlab = "Principal Component",
+     ylab = "Eigenvalue",
+     main = "Scree Plot")
+abline(h = 1, col = "red", lty = 2)
+
+```
+I would retain 2 principal components.
+
+There are three reasons for this decision:
+
+Kaiser criterion: Components with eigenvalues greater than 1 should be retained. Only PC1 and PC2 meet that rule.
+Cumulative variance explained: PC1 and PC2 together explain about 90.5% of the total variance, which is very high.
+Scree plot: There is a clear drop after the second component, and the remaining components contribute much less information.
+
+Therefore, retaining 2 components is the most reasonable choice.
+
+
+
+Question 6
+
+The first principal component can be labeled Service Sensitivity or Service Expectation.
+
+This factor is strongly associated with:
+
+disliking disrespect in stores (X1)
+appreciating salespeople who answer questions (X3)
+not finding attentive salespeople irritating (X2, with opposite direction)
+
+Consumers with high scores on this factor seem to care about respectful and helpful service.
+
+The second principal component can be labeled Discount / Value Orientation.
+
+This factor is strongly associated with:
+
+not caring for fancy department store displays (X4)
+believing discount stores offer better bargains (X5)
+
+Consumers with high scores on this factor appear to focus more on bargains and value than on the shopping environment.
+
+
+```{r}
+
+#Question 7
+
+# PCA scores
+scores <- as.data.frame(pca_fit$x)
+scores$Resp <- assg1$Resp
+
+# Two-dimensional map
+plot(scores$PC1, scores$PC2,
+     xlab = "Service Sensitivity",
+     ylab = "Discount / Value Orientation",
+     main = "Consumer Map Based on First Two Principal Components",
+     pch = 19)
+
+text(scores$PC1, scores$PC2, labels = scores$Resp, pos = 3, cex = 0.8)
+abline(h = 0, v = 0, lty = 2, col = "gray")
+```
+
+The two-dimensional map plots each consumer according to their position on the first two principal components. Consumers near each other on the plot have similar shopping attitudes, while consumers farther apart have more different preferences.
+
+The x-axis represents service sensitivity, and the y-axis represents discount/value orientation.
+
+```{r}
+
+# Question 8
+
+# Optional clustering to support visual interpretation
+set.seed(123)
+km3 <- kmeans(scores[, c("PC1", "PC2")], centers = 3, nstart = 20)
+
+scores$segment <- as.factor(km3$cluster)
+
+plot(scores$PC1, scores$PC2,
+     col = scores$segment,
+     pch = 19,
+     xlab = "Service Sensitivity",
+     ylab = "Discount / Value Orientation",
+     main = "Consumer Segments on PCA Map")
+text(scores$PC1, scores$PC2, labels = scores$Resp, pos = 3, cex = 0.8)
+abline(h = 0, v = 0, lty = 2, col = "gray")
+```
+Based on the PCA map, the market appears to contain about 3 segments.
+
+Visually, the consumers seem to group into:
+
+a service-oriented group,
+a bargain/value-oriented group,
+and a group that is less service-driven and less discount-focused.
+
+The k-means clustering with 3 centers supports this rough segmentation.
+
+```{r}
+
+#Question 9
+
+# Add segment labels back to original data
+assg1$segment <- km3$cluster
+
+# Segment means for original variables
+segment_profile <- assg1 %>%
+  group_by(segment) %>%
+  summarise(across(X1:X5, mean))
+
+segment_profile
+```
+
+The segment profiles can be interpreted as follows:
+
+Segment 1: Service-Oriented Shoppers
+
+These consumers score high on the service factor. They:
+
+dislike disrespect in stores,
+value salespeople who answer questions,
+are less likely to be irritated by salesperson attention.
+
+This group appears to prefer a more helpful and service-focused shopping environment.
+
+Segment 2: Discount / Bargain Seekers
+
+These consumers score high on the discount/value factor. They:
+
+do not care much about department store displays,
+are more likely to believe discount stores offer better bargains,
+tend to be more focused on value than service.
+
+This group appears most attracted to discount-oriented retail settings.
+
+Segment 3: Independent Department-Store Shoppers
+
+These consumers are lower on both service sensitivity and discount orientation. They:
+
+are not strongly attracted to discount stores,
+may value the department store environment,
+but do not especially want a lot of salesperson interaction.
+
+This group seems to prefer a more independent shopping experience in a traditional retail setting.
+
+These segment descriptions connect back directly to the original variables because the PCA factors were formed from those five attitude measures.
+
+```{r}
+
+#Question 10
+
+# Segment sizes
+segment_sizes <- assg1 %>%
+  count(segment) %>%
+  mutate(percent = 100 * n / sum(n))
+
+segment_sizes
+```
+
+The segment I would expect to be the most profitable is the Independent Department-Store Shoppers segment.
+
+This segment is likely to be the most profitable because:
+
+they do not appear highly price-sensitive,
+they are less attracted to discount stores,
+they may be willing to shop in higher-margin department store environments,
+and they do not seem to require as much sales assistance as the highly service-oriented group.
+
+That combination suggests higher revenue potential with lower service cost.
+
+Using the segment size table, the size of this segment can be calculated as:
+
+Segment Size
+=
+Number of Consumers in Segment
+30
+×
+100
+Segment Size=
+30
+Number of Consumers in Segment
+	​
+
+×100
+
+If this segment contains 6 consumers, then its size is:
+
+6
+30
+×
+100
+=
+20
+%
+30
+6
+	​
+
+×100=20%
+
+So the estimated size of the most profitable segment would be 20% of the market.
+
+Conclusion
+
+The PCA results show that consumer shopping attitudes can be summarized using two main dimensions: Service Sensitivity and Discount / Value Orientation. These two factors explain over 90% of the variation in the data, making them very useful for understanding consumer behavior.
+
+Based on the PCA map, the market appears to contain about three consumer segments: service-oriented shoppers, bargain seekers, and independent department-store shoppers. Among these, the independent department-store shoppers may be the most profitable because they appear less price-sensitive while also requiring less sales support.

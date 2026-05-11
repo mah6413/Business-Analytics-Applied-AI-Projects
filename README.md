@@ -60,6 +60,14 @@ My goal is to develop production-ready AI systems that enhance organizational de
 
 # Featured Projects
 
+## Principal Component Analysis (PCA) in R for Dimensionality Reduction & Data Insights
+
+Developed a Principal Component Analysis (PCA) project in R Markdown to analyze high-dimensional data and identify the key variables driving variation within the dataset. Applied statistical techniques including data standardization, covariance analysis, eigenvalue decomposition, and principal component extraction to reduce dimensionality while preserving the majority of informational variance.
+
+Performed exploratory data analysis and interpreted component loadings to uncover relationships between variables and transform complex datasets into interpretable insights. Created visualizations including scree plots, biplots, and variance contribution charts to support statistical interpretation and communicate findings effectively.
+
+**Tools & Technologies:** R, R Markdown, ggplot2, dplyr, PCA (`prcomp`), statistical analysis, data visualization.
+
 ## Policy Content & Briefing Assistant (RAG System)
 
 Developed a Retrieval-Augmented Generation (RAG) assistant that helps policy and advocacy teams generate briefings, summarize documents, and answer questions using trusted policy sources.

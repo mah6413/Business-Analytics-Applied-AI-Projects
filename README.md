@@ -10,7 +10,7 @@ My work focuses on designing intelligent systems that integrate statistical mode
 
 # About Me
 
-I am a Cybersecurity Analyst and graduate student specializing in Applied AI, business analytics, and enterprise AI system development. My technical focus includes:
+I am a DevOps Engineer and graduate student specializing in Applied AI, business analytics, and enterprise AI system development. My technical focus includes:
 
 * Applied AI and LLM system design
 * Python programming and analytics
